@@ -16,7 +16,10 @@ public class Chili : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float time = Mathf.PingPong(Time.time * speed, 1f);
-        transform.localPosition = initialPos + direction.normalized * distance * time;
+        if(GameManager.Instance.State == true)
+        {
+            float time = Mathf.PingPong(Time.time * speed, 1f);
+            transform.localPosition = initialPos + direction.normalized * distance * time;
+        }
     }
 }

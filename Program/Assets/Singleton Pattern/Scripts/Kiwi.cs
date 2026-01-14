@@ -12,7 +12,10 @@ public class Kiwi : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float scaleValue = Mathf.PingPong(Time.time * speed, maxScale);
-        transform.localScale = Vector3.one * scaleValue;
+        if(GameManager.Instance.State == true)
+        {
+            float scaleValue = Mathf.PingPong(Time.time * speed, maxScale);
+            transform.localScale = Vector3.one * scaleValue;
+        }
     }
 }

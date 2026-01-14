@@ -15,8 +15,11 @@ public class Eggy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float time = Mathf.PingPong(Time.time * speed, 1f);
-        float rotValue = (time * 2f - 1f) * angle;
-        transform.localRotation = quaternion * Quaternion.AngleAxis(rotValue, axis);
+        if(GameManager.Instance.State == true)
+        {
+            float time = Mathf.PingPong(Time.time * speed, 1f);
+            float rotValue = (time * 2f - 1f) * angle;
+            transform.localRotation = quaternion * Quaternion.AngleAxis(rotValue, axis);
+        }
     }
 }
