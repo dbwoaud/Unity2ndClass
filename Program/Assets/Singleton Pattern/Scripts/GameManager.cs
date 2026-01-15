@@ -19,7 +19,15 @@ public class GameManager : MonoBehaviour
         get
         {
             if (instance == null)
+            {
                 instance = FindObjectOfType<GameManager>();
+                if(instance == null)
+                {
+                    GameObject gameManager = new GameObject(nameof(GameManager));
+                    instance = gameManager.AddComponent<GameManager>();
+                }
+            }
+                
             return instance;
         }
         
@@ -29,7 +37,6 @@ public class GameManager : MonoBehaviour
     {
         if (instance != null)
             Destroy(gameObject);
-        instance = this;
     }
 
     private void Start()
@@ -44,5 +51,10 @@ public class GameManager : MonoBehaviour
     public void OnClickContinueButton()
     {
         state = true;
+    }
+
+    private void Update()
+    {
+
     }
 }
