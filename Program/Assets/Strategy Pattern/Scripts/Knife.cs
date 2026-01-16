@@ -2,8 +2,14 @@ using UnityEngine;
 
 public class Knife : Weapon
 {
+    [SerializeField] Animator animator;
+
+    private void Awake()
+    {
+        animator = GetComponent<Animator>();
+    }
     public override void Attack()
     {
-        Debug.Log("Ä®·Î °ø°Ý");
+        animator.Play("KnifeAttack");
     }
 }
