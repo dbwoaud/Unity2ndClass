@@ -173,7 +173,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 982898919206160789, guid: 04495cef3464e344985b5edc1a75eae1, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -596,6 +596,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6634182785506780971, guid: 1d53015a2cc89714b8b5a612075cfc22, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1369413387}
+    - targetCorrespondingSourceObject: {fileID: 6634182785506780971, guid: 1d53015a2cc89714b8b5a612075cfc22, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1369413392}
   m_SourcePrefab: {fileID: 100100000, guid: 1d53015a2cc89714b8b5a612075cfc22, type: 3}
 --- !u!1 &1369413386 stripped
 GameObject:
@@ -614,6 +617,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5f4609ae3749f2468931e4d0682c770, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  throwDirection: {x: 0, y: 1, z: 1}
+  startPos: {x: 0, y: 0, z: 0}
+  throwSpeed: 10
+  rigidbody: {fileID: 1369413392}
+--- !u!54 &1369413392
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1369413386}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
 --- !u!1001 &1428414369
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -668,7 +702,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5602255901425776389, guid: 235ee1b5ef515a541ae4a856d291e5b1, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

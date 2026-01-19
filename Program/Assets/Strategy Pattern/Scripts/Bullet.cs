@@ -3,20 +3,16 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     [SerializeField] float speed = 10f;
-    [SerializeField] float maxDistance = 20f;
+    [SerializeField] float duration;
 
-    private Vector3 startPos;
+    [SerializeField] Vector3 direction;
 
     private void Start()
     {
-        startPos = transform.position;
+        Destroy(gameObject, duration);
     }
     void Update()
     {
-        transform.Translate(Vector3.forward * speed * Time.deltaTime);
-        if(Vector3.Distance(transform.position, startPos) >= maxDistance)
-        {
-            Destroy(gameObject);
-        }
+        transform.Translate(direction * speed * Time.deltaTime);
     }
 }
