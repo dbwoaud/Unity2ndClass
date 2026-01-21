@@ -23,9 +23,10 @@ public class CreateManager : MonoBehaviour
     {
         while(true)
         {
-            GameObject clone = Instantiate(monster);
+            GameObject clone = ObjectPool.Instance.GetObject();
             Vector2 direction = Random.insideUnitCircle.normalized * distance;
             clone.transform.position = new Vector3(direction.x, 0, direction.y);
+            clone.GetComponent<Monster>().Init();
             yield return duration;
         }
     }

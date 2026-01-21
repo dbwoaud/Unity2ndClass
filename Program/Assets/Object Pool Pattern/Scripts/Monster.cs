@@ -7,14 +7,13 @@ public class Monster : MonoBehaviour
     [SerializeField] Vector3 direction;
     [SerializeField] GameObject portal;
 
-    private void Start()
+
+    public void Init()
     {
         portal = GameObject.Find("Portal");
         transform.LookAt(portal.transform);
         direction = (portal.transform.position - transform.position).normalized;
     }
-
-    // Update is called once per frame
     void Update()
     {
         transform.Translate(direction * speed * Time.deltaTime, Space.World);
@@ -24,7 +23,7 @@ public class Monster : MonoBehaviour
     {
         if(other.CompareTag("Portal"))
         {
-            Destroy(gameObject);
+            ObjectPool.Instance.ReturnObject(gameObject);
         }
     }
 }
