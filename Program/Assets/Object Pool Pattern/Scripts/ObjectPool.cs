@@ -1,23 +1,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ObjectPool : MonoBehaviour
+public class ObjectPool : Singleton<ObjectPool>
 {
-    public static ObjectPool instance;
-    public static ObjectPool Instance { get { return instance; } }
     [SerializeField] Stack<GameObject> monsterStack = new Stack<GameObject>();
     [SerializeField] int spawnCount;
     private void Awake()
     {
-        if (instance == null)
-        {
-            instance = this;
-            if(instance == null)
-                instance = new GameObject("ObjectPool").AddComponent<ObjectPool>();
-        }
-        else
-            Destroy(gameObject);
-        
+        spawnCount = 5;
         for (int i = 0; i < spawnCount; i++)
         {
             GameObject clone = Instantiate(Resources.Load<GameObject>("minotaur"), transform);
