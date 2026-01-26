@@ -16,13 +16,16 @@ public class RewardManager : MonoBehaviour
     {
         for(int i = 0; i < createCount; i++)
         {
-            bundle.Add(Instantiate(reward));
+            bundle.Add(Instantiate(reward,rewardList.transform));
         }
     }
 
     public void OnClickAcceptButton()
     {
         bundle.Receive();
-        gameObject.SetActive(false);
+        foreach (Transform child in rewardList.transform)
+        {
+            Destroy(child.gameObject);
+        }
     }
 }
