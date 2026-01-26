@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3908106454887178318}
   - component: {fileID: 6173452626188841250}
   - component: {fileID: 5821332441294911748}
+  - component: {fileID: 5430594283362145560}
   m_Layer: 5
   m_Name: Reward
   m_TagString: Untagged
@@ -75,3 +76,28 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &5430594283362145560
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7169085440256169222}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f3c9cb6b0f408949af90d41326fa7a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data:
+  - name: Coins
+    sprite: {fileID: 21300000, guid: 3c8f00c7cc7104e279600ab7aa1a52e9, type: 3}
+  - name: Diamond
+    sprite: {fileID: 21300000, guid: 5866a9d81e8c442918d2e437d00670ed, type: 3}
+  - name: Heart
+    sprite: {fileID: 21300000, guid: ed26addb048b94a31a88c27910f21aac, type: 3}
+  - name: Key
+    sprite: {fileID: 21300000, guid: dcbd11bf8a2734afdac3fe1fb38d71ab, type: 3}
+  - name: Potion
+    sprite: {fileID: 21300000, guid: b7e6f9ce747b04e1b9db526471629555, type: 3}
+  name: 
+  image: {fileID: 0}
