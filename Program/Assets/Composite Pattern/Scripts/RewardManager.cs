@@ -6,7 +6,8 @@ public class RewardManager : MonoBehaviour
     [SerializeField] int createCount;
     [SerializeField] Bundle bundle;
     [SerializeField] Reward reward;
-    [SerializeField] GameObject rewardList;
+    [SerializeField] GameObject panel;
+    [SerializeField] GameObject parent;
 
     private void Awake()
     {
@@ -16,16 +17,13 @@ public class RewardManager : MonoBehaviour
     {
         for(int i = 0; i < createCount; i++)
         {
-            bundle.Add(Instantiate(reward,rewardList.transform));
+            bundle.Add(Instantiate(reward,parent.transform));
         }
     }
 
     public void OnClickAcceptButton()
     {
         bundle.Receive();
-        foreach (Transform child in rewardList.transform)
-        {
-            Destroy(child.gameObject);
-        }
+        panel.SetActive(false);
     }
 }
