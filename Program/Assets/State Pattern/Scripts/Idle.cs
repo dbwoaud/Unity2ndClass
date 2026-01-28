@@ -4,14 +4,19 @@ public class Idle : IStatable
 {
     public void Enter(Character character)
     {
-        //character.animator.SetInteger("X", (int)Input.GetAxisRaw("Horizontal"));
-        //character.animator.SetInteger("Y", (int)Input.GetAxisRaw("Vertical"));
         Debug.Log("Idle Enter");
     }
     public void Stay(Character character)
     {
-        if (Input.GetAxisRaw("Horizontal") == 0 && Input.GetAxisRaw("Vertical") == 0)
-            character.SwitchState(new Idle());
+        if (Input.GetKey(KeyCode.Space))
+        {
+            character.SwitchState(new Attack());
+        }
+
+        int X = (int)Input.GetAxisRaw("Horizontal");
+        int Y = (int)Input.GetAxisRaw("Vertical");
+        if(X != 0 || Y != 0)
+            character.SwitchState(new Walk());
         Debug.Log("Idle Stay");
     }
     public void Exit(Character character)

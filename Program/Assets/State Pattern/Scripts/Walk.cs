@@ -4,20 +4,24 @@ public class Walk : IStatable
 {
     public void Enter(Character character)
     {
-        //character.animator.SetInteger("X", (int)Input.GetAxisRaw("Horizontal"));
-        //character.animator.SetInteger("Y", (int)Input.GetAxisRaw("Vertical"));
-        Debug.Log("Walk Enter");
+        character.animator.SetInteger("X", 1);
+        character.animator.SetInteger("Y", 1);
     }
     public void Stay(Character character)
     {
-        Debug.Log("Walk Stay");
-        if (Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0)
+        if (Input.GetKey(KeyCode.Space))
         {
-            character.SwitchState(new Walk());
+            character.SwitchState(new Attack());
         }
+
+        int X = (int)Input.GetAxisRaw("Horizontal");
+        int Y = (int)Input.GetAxisRaw("Vertical");
+        if (X == 0 && Y == 0)
+            character.SwitchState(new Idle());
     }
     public void Exit(Character character)
     {
-        Debug.Log("Walk Exit");
+        character.animator.SetInteger("X", 0);
+        character.animator.SetInteger("Y", 0);
     }
 }

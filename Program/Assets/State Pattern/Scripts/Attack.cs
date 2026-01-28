@@ -4,18 +4,18 @@ public class Attack : IStatable
 {
     public void Enter(Character character)
     {
-        Debug.Log("Attack Enter");
+        character.animator.ResetTrigger("Attack");
+        character.animator.SetTrigger("Attack");
     }
     public void Stay(Character character)
     {
-        if (Input.GetKey(KeyCode.Space))
-        {
-            character.SwitchState(new Attack());
-        }
-        Debug.Log("Attack Stay");
+        AnimatorStateInfo animatorStateInfo = character.animator.GetCurrentAnimatorStateInfo(0);
+        if (character.animator.IsInTransition(0) && animatorStateInfo.IsName("Attack"))
+            character.SwitchState(new Idle());
     }
     public void Exit(Character character)
     {
-        Debug.Log("Attack Exit");
+        character.animator.SetInteger("X", 0);
+        character.animator.SetInteger("Y", 0);
     }
 }
