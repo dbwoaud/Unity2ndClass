@@ -4,11 +4,13 @@ using UnityEngine;
 public class Bull : MonoBehaviour
 {
     private Coroutine coroutine;
-    [SerializeField] Animator animator;
 
+    [SerializeField] Animator animator;
+    [SerializeField] AnimatorClipInfo[] animatorClipInfoList;
     private void Awake()
     {
         animator = GetComponent<Animator>();
+        animatorClipInfoList = animator.GetCurrentAnimatorClipInfo(0);
     }
     private void Start()
     {
@@ -17,32 +19,45 @@ public class Bull : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Q))
         {
             if(coroutine != null)
                 StopCoroutine(coroutine);
+            coroutine = StartCoroutine(Smash());      
+        }
+
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            if (coroutine != null)
+                StopCoroutine(coroutine);
             coroutine = StartCoroutine(Domination());
-            
+        }
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            if (coroutine != null)
+                StopCoroutine(coroutine);
+            coroutine = StartCoroutine(Yelling());
         }
     }
     private IEnumerator Smash()
     {
         animator.SetTrigger("Smash");
-        yield return new WaitForSeconds(2.5f);
-        Debug.Log("Smash Exit");
+        Debug.Log(animatorClipInfoList[0].clip.length);
+        yield return CoroutineCache.GetCachedWait(animatorClipInfoList[0].clip.length);
     }
 
     private IEnumerator Domination()
     {
         animator.SetTrigger("Domination");
-        yield return new WaitForSeconds(2.5f);
-        Debug.Log("Domination Exit");
+        Debug.Log(animatorClipInfoList[0].clip.length);
+        yield return CoroutineCache.GetCachedWait(animatorClipInfoList[0].clip.length);
     }
 
     private IEnumerator Yelling()
     {
         animator.SetTrigger("Yelling");
-        yield return new WaitForSeconds(2.5f);
-        Debug.Log("Yelling Exit");
+        Debug.Log(animatorClipInfoList[0].clip.length);
+        yield return CoroutineCache.GetCachedWait(animatorClipInfoList[0].clip.length);
     }
 }
