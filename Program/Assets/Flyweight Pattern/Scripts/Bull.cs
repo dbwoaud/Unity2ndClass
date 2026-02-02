@@ -5,6 +5,7 @@ public class Bull : MonoBehaviour
 {
     private Coroutine coroutine;
 
+    [SerializeField] string[] patternName;
     [SerializeField] Animator animator;
     [SerializeField] AnimatorClipInfo[] animatorClipInfoList;
     private void Awake()
@@ -14,49 +15,23 @@ public class Bull : MonoBehaviour
     }
     private void Start()
     {
-        coroutine = StartCoroutine(Smash());
+        StartCoroutine(Coroutine());
     }
 
-    private void Update()
+    IEnumerator Coroutine()
     {
-        if (Input.GetKeyDown(KeyCode.Q))
+        while(true)
         {
-            if(coroutine != null)
-                StopCoroutine(coroutine);
-            coroutine = StartCoroutine(Smash());      
-        }
-
-        if (Input.GetKeyDown(KeyCode.W))
-        {
+            yield return CoroutineCache.GetCachedWait(5.0f);
             if (coroutine != null)
                 StopCoroutine(coroutine);
-            coroutine = StartCoroutine(Domination());
-        }
-
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            if (coroutine != null)
-                StopCoroutine(coroutine);
-            coroutine = StartCoroutine(Yelling());
+            coroutine = StartCoroutine(Pattern(patternName[Random.Range(0,patternName.Length)]));
         }
     }
-    private IEnumerator Smash()
-    {
-        animator.SetTrigger("Smash");
-        Debug.Log(animatorClipInfoList[0].clip.length);
-        yield return CoroutineCache.GetCachedWait(animatorClipInfoList[0].clip.length);
-    }
 
-    private IEnumerator Domination()
+    private IEnumerator Pattern(string name)
     {
-        animator.SetTrigger("Domination");
-        Debug.Log(animatorClipInfoList[0].clip.length);
-        yield return CoroutineCache.GetCachedWait(animatorClipInfoList[0].clip.length);
-    }
-
-    private IEnumerator Yelling()
-    {
-        animator.SetTrigger("Yelling");
+        animator.SetTrigger(name);
         Debug.Log(animatorClipInfoList[0].clip.length);
         yield return CoroutineCache.GetCachedWait(animatorClipInfoList[0].clip.length);
     }
