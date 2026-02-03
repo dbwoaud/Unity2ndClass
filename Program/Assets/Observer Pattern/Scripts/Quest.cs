@@ -4,7 +4,7 @@ using UnityEngine;
 public class Quest
 {
     public string title;
-    public string decoration;
+    public string description;
     public bool complete;
 
 }

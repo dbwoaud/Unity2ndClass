@@ -1,15 +1,21 @@
 using UnityEngine;
-
+using UnityEngine.UI;
 public class Notification : MonoBehaviour
 {
+    [SerializeField] Button acceptButton;
+
+    private void Awake()
+    {
+        acceptButton = GetComponentInChildren<Button>();
+    }
     private void OnEnable()
     {
-        QuestManager.onQuestCompleted += Show;
+        QuestManager.OnQuestCompleted += Show;
     }
 
     private void OnDisable()
     {
-        QuestManager.onQuestCompleted -= Show;
+        QuestManager.OnQuestCompleted -= Show;
     }
     void Show(Quest quest)
     {
