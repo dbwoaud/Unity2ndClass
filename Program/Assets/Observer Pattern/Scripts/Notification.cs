@@ -3,7 +3,7 @@ using UnityEngine.UI;
 public class Notification : MonoBehaviour
 {
     [SerializeField] Button acceptButton;
-
+    [SerializeField] Sprite clearIcon;
     private void Awake()
     {
         acceptButton = GetComponentInChildren<Button>();
@@ -19,6 +19,11 @@ public class Notification : MonoBehaviour
     }
     void Show(Quest quest)
     {
-        Debug.Log("Quest Name: " + quest.title + " Clear");
+        if(quest.complete)
+        {
+            acceptButton.gameObject.SetActive(true);
+            acceptButton.image.sprite = clearIcon;
+        }
+
     }
 }

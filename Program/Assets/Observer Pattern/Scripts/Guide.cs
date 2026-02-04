@@ -4,7 +4,6 @@ public class Guide : MonoBehaviour
 {
     [SerializeField] Quest quest;
     [SerializeField] Button acceptButton;
-
     private void Awake()
     {
         acceptButton = GetComponentInChildren<Button>();
